@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="build/presentation.css">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides"><section></section><section></section><section><h2>pyyaml == eval?</h2>
+</section><section><h3>solution? <code>safe_load</code></h3>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="s2">&quot;!!python/object/apply:os.system</span><span class="se">\n</span><span class="s2">args: [&#39;echo hi&#39;]&quot;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="c">...</span>
+<span class="gr">yaml.constructor.ConstructorError</span>: <span class="n">could not determine a constructor for the tag &#39;tag:yaml.org,2002:python/object/apply:os.system&#39;</span>
+<span class="go">  in &quot;&lt;unicode string&gt;&quot;, line 1, column 1:</span>
+<span class="go">    !!python/object/apply:os.system</span>
+<span class="go">    ^</span>
+</pre></div>
+</section><section><h2>but wait! there's more!</h2>
+</section><section><h3><code>yaml.safe_load</code> is pure python</h3>
+<ul>
+<li>Essentially <code>yaml.load(..., Loader=SafeLoader)</code></li>
+<li>For cpython this is <em>slow</em> by default</li>
+</ul>
+</section><section><h3>fast <em>and</em> safe</h3>
+<div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">yaml.cyaml</span> <span class="kn">import</span> <span class="n">CSafeLoader</span> <span class="k">as</span> <span class="n">Loader</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">yaml</span> <span class="kn">import</span> <span class="n">SafeLoader</span> <span class="k">as</span> <span class="n">Loader</span>
+
+
+<span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">Loader</span><span class="o">=</span><span class="n">Loader</span><span class="p">)</span>
+</pre></div>
+</section></div>
+        </div>
+        <script src="build/presentation.js"></script>
+        <script>
+            Reveal.initialize({
+                history: true,
+                transition: 'linear',
+                keyboard: {39: 'next', 37: 'prev'}
+            });
+        </script>
+    </body>
+</html>
