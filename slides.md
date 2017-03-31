@@ -1,8 +1,8 @@
-[](The first two slides are intentionally blank for the intro)
+[comment]: # (The first two slides are intentionally blank for the intro)
 
 ***
 
-[](The first two slides are intentionally blank for the intro)
+[comment]: # (The first two slides are intentionally blank for the intro)
 
 ***
 
