@@ -9,7 +9,7 @@ branches:
 env:
     global:
         # GH_TOKEN
-        - secure: "hqNCk7+3pZxxMHF8sr49zB8rP8oxvv6iLi4/BBm+OQwoWoram0yn+gTAi5q35lewLk6nz/w68tCpown1UmeSFkAulvRMZstq/dC5pQ8FDwK0gtfRrhX7+gTFOV/+3yrxAllyi4eKzF3GebOizoVSLG1+dsuQs43VIV7wguJSM0r/LmbwaFf8eAFPVMm8hKR8R8mglw0Q2b4h0H3EWUjOaEtzQAWX/VbIe48Qat/64ybjmTX1TWGefMIqiDRJvHj8ITXu/kkNLnhXFGZ7ShnghYI7LJp+VlMmCLRd0xjpri6SGHvtKNVm7Zdnh30o1Fr49CbynwYoO/ZckAC49vmdkoT5dPkU6UdMcx46EiLlP9JOVhIUEpqh6OZ2GNodGox0az/aEBVkw/BQ0ZuRJR6MT0TegvYF9j1IkgfqhjU3XwOjFYcPMLdqeRwvl4xrlnIrWzY5pTCzAL1Dg6qs2wS0xxYQ5k+f+ApA9yhwHRGmmlRDBIpaP7S4GbimpeDjgpIzp0r+fwRQB7tDSpBrOq5V+hVTfEh6fzh6mv2v1PbOkHvuPUUmMUQy5f1gWhiZUFPIiwhii/A+jcvxswYIxruEhrPtJ+Fj3+bd9qitpwpqDXVFwY3RRD/+gdcIX4+1oaHkSTfSesbIFJtg3b6/vQVL8GtkdaiDoR288vKbuoPY4EI="
+        - secure: "U/MGvwbYwvp4VirL8K3a3Eh4ESifxWIGDBo4FgPQMM0KPew76rtoDGUTOBGvBu6C7k3i9Mg/o2D0OHWtdlsOzI4b+ZBSA1XZyH1s2BZG5qGV5gsHoyVPJSNzez465oZbOBVBdi6TdgZkR1ZlkDfQRfwwYTTAd3Fnimo2gAY2AoQDgcWu8Emd6wRU4seAFHelotJ7nNqm6fJ+y+7/ZbZ2LIAtRW6+zFrkn3/ct5zQLNgEC+zxU+kvlkRXqs1L6Mtk49VHWJnCj/B4PujvmUOAIbI/A23WJgcniGZd6uLxjD2IkK6vR7xrbqQlAeU8WBQj+1NUrIUUAOGG4wa3Ky0KV03AHL+mk+pzXYEHiAYoE8vtyeCdJ6DLZYs4VSbL8u/cUSKJq0EkdAPk+iyNKZ7hlrZlNM0RM93Evqmo5qZCH+snQVCkZKKIBs4i3JaLqgA+E/2RWM9Boy3PKlsfCPOvzUIxNGd8a1oAEMTXwCEng7eXm16/U1WUV0ouo9D//AE3WJYMKy/0k9r350ybtu5fUewKC2JoTSaesZh6q2oOHePIRK0obXIiv4A+Qd3hAaK2LNCGS+HcQ5CiFSDtFwpPJscjWu9f7vANbIxhUuRdDW6KW0/pGjMYH0vrdd4AmuZCklosPJrzOjLI4u0PUP1UfyWsuzVVXz5sDda/dm8lhB0="
 cache:
     directories:
         - "$HOME/.cache/pip"
