@@ -12,7 +12,7 @@ git config user.email "user@example.com"
 git rm * -rf
 popd
 
-cp -r build index.htm .travis.yml demo/
+rsync -avrR index.htm .travis.yml */index.htm */build demo
 
 cd demo
 git add .

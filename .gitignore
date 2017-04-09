@@ -1,4 +1,6 @@
-/.mtp
-/build
+*/.mtp
+*/assets
+*/build
+*/index.htm
 /index.htm
 /venv

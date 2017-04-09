@@ -1,15 +1,16 @@
-wat-02-pyyaml
-=============
+episodes-wat
+============
 
-Slides to support wat - pyyaml == eval? #02
+Presentation slides and associated code for episodes in the *wat* series for
+youtube.
 
-For slides see [anthonywritescode.github.io/wat-02-pyyaml](https://anthonywritescode.github.io/wat-02-pyyaml)
-or open up `slides.md`.
+[Series playlist](https://www.youtube.com/watch?v=mRPU3l54Z7I&list=PLWBKAf81pmOamJfoHz4oRdieWQysmUkaW)
 
+Episodes in this series:
 
-Directions:
-
-```
-$ make
-$ firefox index.htm &
-```
+- `False == False in [False]` (python) #01
+    - [youtube](https://www.youtube.com/watch?v=mRPU3l54Z7I)
+- pyyaml == eval ? (python) #02
+    - youtube
+    - slides
+    - slides (markdown)
