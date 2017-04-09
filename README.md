@@ -12,5 +12,5 @@ Episodes in this series:
     - [youtube](https://www.youtube.com/watch?v=mRPU3l54Z7I)
 - pyyaml == eval ? (python) #02
     - youtube
-    - slides
-    - slides (markdown)
+    - [slides](https://anthonywritescode.github.io/episodes-wat/02-pyyaml/#/2)
+    - [slides (markdown)](https://github.com/anthonywritescode/episodes-wat/blob/master/02-pyyaml/slides.md)
