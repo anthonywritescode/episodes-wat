@@ -9,8 +9,8 @@ venv: requirements.txt
 	venv/bin/pip install -rrequirements.txt
 	venv/bin/pre-commit install -f --install-hooks
 
-index.htm: README.md make_index.py venv
-	venv/bin/python make_index.py
+index.htm: README.md venv
+	venv/bin/markdown-code-blocks-highlight $< > $@
 
 %/assets:
 	mkdir -p $@
