@@ -1,8 +1,7 @@
 EPISODES = $(wildcard [0-9][0-9]*)
-EPISODES_SCSS_APP = $(patsubst %,%/assets/_app.scss,$(EPISODES))
-EPISODES_SCSS_THEME = $(patsubst %,%/assets/_theme.scss,$(EPISODES))
+EPISODES_MAKE = $(patsubst %,make-%,$(EPISODES))
 
-all: index.htm make-episodes
+all: index.htm $(EPISODES_MAKE)
 
 venv: requirements.txt
 	rm -rf venv
@@ -20,12 +19,12 @@ index.htm: README.md make_index.py venv
 %/assets/_theme.scss: | %/assets
 	cd $*/assets && ln -s ../../assets/_theme.scss .
 
-make-episodes: $(EPISODES_SCSS_APP) $(EPISODES_SCSS_THEME) venv
-make-episodes:
-	echo -n $(EPISODES) | \
-		xargs -d' ' --replace bash -c ' \
-			cd {} && ../venv/bin/markdown-to-presentation run-build \
-		'
+.PHONY: make-%
+make-%: %/assets/_app.scss %/assets/_theme.scss venv
+	cd $* && ../venv/bin/markdown-to-presentation run-build
+
+push: venv
+	venv/bin/markdown-to-presentation push index.htm */index.htm */build
 
 clean:
 	rm -rf */.mtp venv */build */index.htm
