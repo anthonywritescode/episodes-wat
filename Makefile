@@ -27,4 +27,6 @@ push: venv
 	venv/bin/markdown-to-presentation push index.htm */index.htm */build
 
 clean:
-	rm -rf */.mtp venv */build */index.htm
+	rm -rf index.htm venv */.mtp */assets */build */index.htm
+
+.SECONDARY:
