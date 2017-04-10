@@ -13,14 +13,10 @@ index.htm: README.md venv
 	venv/bin/markdown-code-blocks-highlight $< > $@
 
 %/assets:
-	mkdir -p $@
-%/assets/_app.scss: | %/assets
-	cd $*/assets && ln -s ../../assets/_app.scss .
-%/assets/_theme.scss: | %/assets
-	cd $*/assets && ln -s ../../assets/_theme.scss .
+	cd $* && ln -s ../assets .
 
 .PHONY: make-%
-make-%: %/assets/_app.scss %/assets/_theme.scss venv
+make-%: %/assets venv
 	cd $* && ../venv/bin/markdown-to-presentation run-build
 
 push: venv
