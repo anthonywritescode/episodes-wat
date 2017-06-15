@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="build/presentation.css">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides"><section></section><section></section><section><p><a href="https://stackoverflow.com/q/8294618">https://stackoverflow.com/q/8294618</a></p>
+<p><a href="https://twitter.com/zinosys/status/873227565925711872">https://twitter.com/zinosys/status/873227565925711872</a></p>
+<p>@zinosys</p>
+</section><section><h2>generator solution</h2>
+<div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="p">(</span><span class="n">_</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="p">())</span><span class="o">.</span><span class="n">throw</span><span class="p">(</span><span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;foobar&#39;</span><span class="p">))</span>
+</pre></div>
+<ul>
+<li><code>(_ for _ in ())</code> is a generator</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="p">()</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;lambda&gt;</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;genexpr&gt;</span>
+<span class="gr">Exception</span>: <span class="n">foobar</span>
+</pre></div>
+</section><section><h2>generators</h2>
+<ul>
+<li>generators allow you to implement coroutines</li>
+<li>can think of them as asynchronously executed code</li>
+<li>three operations<ul>
+<li><code>.next()</code> - run up to and return the <code>yield</code>ed value</li>
+<li><code>.send(val)</code> - substitute <code>val</code> for the previous <code>yield</code>,
+<code>return self.next()</code></li>
+<li><code>.throw(exc[,typ[,tb]])</code> - raise an exception from the current <code>yield</code></li>
+</ul>
+</li>
+</ul>
+</section><section><h2>code object solution</h2>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span><span class="mi">0</span><span class="p">)(</span><span class="nb">type</span><span class="p">((</span><span class="k">lambda</span><span class="p">:</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">func_code</span><span class="p">)(</span>
+<span class="gp">... </span>  <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">67</span><span class="p">,</span><span class="s1">&#39;|</span><span class="se">\0\0\202\1\0</span><span class="s1">&#39;</span><span class="p">,(),(),(</span><span class="s1">&#39;x&#39;</span><span class="p">,),</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">),{}</span>
+<span class="gp">... </span><span class="p">)(</span><span class="ne">Exception</span><span class="p">())</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">3</span>, in <span class="n">&lt;module&gt;</span>
+<span class="err">  File &quot;&quot;, line 1, in</span>
+
+<span class="go">Exception</span>
+</pre></div>
+</section><section><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span><span class="mi">0</span><span class="p">)(</span><span class="nb">type</span><span class="p">((</span><span class="k">lambda</span><span class="p">:</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">func_code</span><span class="p">)(</span>
+  <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">67</span><span class="p">,</span><span class="s1">&#39;|</span><span class="se">\0\0\202\1\0</span><span class="s1">&#39;</span><span class="p">,(),(),(</span><span class="s1">&#39;x&#39;</span><span class="p">,),</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">),{}</span>
+<span class="p">)</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="p">(</span><span class="ne">OSError</span><span class="p">(</span><span class="s1">&#39;ohai&#39;</span><span class="p">))</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="err">  File &quot;&quot;, line 1, in</span>
+
+<span class="go">OSError: ohai</span>
+</pre></div>
+</section><section><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+<ul>
+<li>Retrieve the <code>type</code> that represents a function</li>
+<li>Same as <code>types.FunctionType</code> or <code>types.LambdaType</code></li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># from python3.6 types.py</span>
+<span class="k">def</span> <span class="nf">_f</span><span class="p">():</span> <span class="k">pass</span>
+<span class="n">FunctionType</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">_f</span><span class="p">)</span>
+<span class="n">LambdaType</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">None</span><span class="p">)</span>         <span class="c1"># Same as FunctionType</span>
+</pre></div>
+</section><section><h2>what is <code>types.FunctionType</code>?</h2>
+<ul>
+<li><code>python -m pydoc types.FunctionType</code></li>
+</ul>
+<div class="highlight"><pre><span></span>types.FunctionType = class function(object)
+ |  function(code, globals[, name[, argdefs[, closure]]])
+</pre></div>
+</section><section><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">((</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">func_code</span><span class="p">)</span>
+</pre></div>
+<ul>
+<li>Retrieve the type that represents a function's <code>code</code> object</li>
+<li>Same as <code>types.CodeType</code></li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># from python3.6 types.py</span>
+<span class="n">CodeType</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">_f</span><span class="o">.</span><span class="vm">__code__</span><span class="p">)</span>
+</pre></div>
+</section><section><h2>what is <code>types.CodeType</code>?</h2>
+<ul>
+<li><code>python -m pydoc types.CodeType</code></li>
+</ul>
+<div class="highlight"><pre><span></span>types.CodeType = class code(object)
+ |  code(argcount, nlocals, stacksize, flags, codestring, constants, names,
+ |        varnames, filename, name, firstlineno, lnotab[, freevars[, cellvars]])
+</pre></div>
+</section><section><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">LambdaType</span><span class="p">(</span><span class="n">CodeType</span><span class="p">(</span>
+  <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">67</span><span class="p">,</span><span class="s1">&#39;|</span><span class="se">\0\0\202\1\0</span><span class="s1">&#39;</span><span class="p">,(),(),(</span><span class="s1">&#39;x&#39;</span><span class="p">,),</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">),{}</span>
+<span class="p">)</span>
+</pre></div>
+</section><section><h2>arguments to the function</h2>
+<ul>
+<li>The <code>inspect</code> module allows us to do some reflection</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">inspect</span><span class="o">.</span><span class="n">getargspec</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="go">ArgSpec(args=[&#39;x&#39;], varargs=None, keywords=None, defaults=None)</span>
+</pre></div>
+<ul>
+<li>So our lambda is a function which takes one positional argument named <code>x</code></li>
+</ul>
+</section><section><h2><code>dis</code></h2>
+<ul>
+<li><code>dis</code> - Disassembler of Python byte code into mnemonics.</li>
+<li>often useful to figure out wtf is going on</li>
+<li>python implements a "stack" virtual machine<ul>
+<li>source code is compiled into opcodes</li>
+<li>each opcode pushes / pops / performs some side-effect</li>
+</ul>
+</li>
+</ul>
+</section><section><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dis</span><span class="o">.</span><span class="n">dis</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="go">  1           0 LOAD_FAST                0 (x)</span>
+<span class="go">              3 RAISE_VARARGS            1</span>
+</pre></div>
+<ul>
+<li><code>LOAD_FAST</code> loads a positional variable (in this case position <code>0</code>) in
+locals (which is the named parameter <code>x</code>)</li>
+<li><code>FAST</code> here means it doesn't need to a full <code>locals()</code> / <code>globals()</code> /
+<code>builtins</code> lookup (it <em>knows</em> it is a local)</li>
+<li><code>RAISE_VARARGS</code> with <code>1</code><ul>
+<li>pop <code>1</code> argument from the stack (the exception)</li>
+<li><code>raise</code> it</li>
+</ul>
+</li>
+</ul>
+</section><section><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">raise</span> <span class="n">x</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dis</span><span class="o">.</span><span class="n">dis</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="go">  1           0 LOAD_FAST                0 (x)</span>
+<span class="go">              3 RAISE_VARARGS            1</span>
+<span class="go">              6 LOAD_CONST               0 (None)</span>
+<span class="go">              9 RETURN_VALUE</span>
+</pre></div>
+<ul>
+<li>looks about the same!</li>
+<li>includes the implicit <code>return None</code></li>
+</ul>
+</section><section><h2>python 3 equivalent</h2>
+<div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">0</span><span class="p">)(</span><span class="nb">type</span><span class="p">((</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="vm">__code__</span><span class="p">)(</span>
+    <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">67</span><span class="p">,</span><span class="sa">b</span><span class="s1">&#39;|</span><span class="se">\0\202\1\0</span><span class="s1">&#39;</span><span class="p">,(),(),(</span><span class="s1">&#39;x&#39;</span><span class="p">,),</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">),{}</span>
+<span class="p">)(</span><span class="ne">Exception</span><span class="p">())</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">0</span><span class="p">)(</span><span class="nb">type</span><span class="p">((</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="vm">__code__</span><span class="p">)(</span>
+<span class="gp">... </span>    <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">67</span><span class="p">,</span><span class="sa">b</span><span class="s1">&#39;|</span><span class="se">\0\202\1\0</span><span class="s1">&#39;</span><span class="p">,(),(),(</span><span class="s1">&#39;x&#39;</span><span class="p">,),</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">),{}</span>
+<span class="gp">... </span><span class="p">)(</span><span class="ne">Exception</span><span class="p">())</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">3</span>, in <span class="n">&lt;module&gt;</span>
+<span class="err">  File &quot;&quot;, line 1, in</span>
+<span class="x">Exception</span>
+</pre></div>
+</section><section><h2>argumentless solution</h2>
+<div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">LambdaType</span><span class="p">(</span>
+        <span class="n">types</span><span class="o">.</span><span class="n">CodeType</span><span class="p">(</span>
+            <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;t</span><span class="se">\0\x83\0\202\1</span><span class="s1">&#39;</span><span class="p">,</span> <span class="p">(),</span> <span class="p">(</span><span class="s1">&#39;Exception&#39;</span><span class="p">,),</span> <span class="p">(),</span>
+            <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;lambda&gt;&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="nb">globals</span><span class="p">(),</span>
+<span class="p">)</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dis</span><span class="o">.</span><span class="n">dis</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="go">  1           0 LOAD_GLOBAL              0 (Exception)</span>
+<span class="go">              2 CALL_FUNCTION            0</span>
+<span class="go">              4 RAISE_VARARGS            1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="p">()</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="err">  File &quot;&quot;, line 1, in &lt;lambda&gt;</span>
+<span class="x">Exception</span>
+</pre></div>
+</section></div>
+        </div>
+        <script src="build/presentation.js"></script>
+        <script>
+            Reveal.initialize({
+                transition: 'linear',
+                keyboard: {39: 'next', 37: 'prev'}
+            });
+        </script>
+    </body>
+</html>
