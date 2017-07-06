@@ -14,3 +14,7 @@ Episodes in this series:
     - [youtube](https://www.youtube.com/watch?v=ATY_R6qEa3s)
     - [slides](https://anthonywritescode.github.io/episodes-wat/02-pyyaml/#/2)
     - [slides (markdown)](https://github.com/anthonywritescode/episodes-wat/blob/master/02-pyyaml/slides.md)
+- lambda: raise? (python) #03
+    - [youtube](https://www.youtube.com/watch?v=JPXDBPZRE7Y)
+    - [slides](https://anthonywritescode.github.io/episodes-wat/03-lambda-raise/#/2)
+    - [slides (markdown)](https://github.com/anthonywritescode/episodes-wat/blob/master/03-lambda-raise/slides.md)
