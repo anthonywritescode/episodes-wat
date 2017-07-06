@@ -6,11 +6,14 @@
 
 ***
 
-https://stackoverflow.com/q/8294618
+```rawhtml
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/codewithanthony">@codewithanthony</a> please explain the insane golf answer in a youtube <a href="https://t.co/ZvX194zUpk">https://t.co/ZvX194zUpk</a></p>&mdash; Eldon Schoop (@zinosys) <a href="https://twitter.com/zinosys/status/873227565925711872">June 9, 2017</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
 
-https://twitter.com/zinosys/status/873227565925711872
-
-@zinosys
+[comment]: # (https://stackoverflow.com/q/8294618)
+[comment]: # (https://twitter.com/zinosys/status/873227565925711872)
+[comment]: # (@zinosys)
 
 ***
 
@@ -215,10 +218,10 @@ Exception
 
 ```python
 y = types.LambdaType(
-        types.CodeType(
-            0, 0, 0, 1, 67, b't\0\x83\0\202\1', (), ('Exception',), (),
-            '', '<lambda>', 1, b'',
-        ),
+    types.CodeType(
+        0, 0, 0, 1, 67, b't\0\x83\0\202\1', (), ('Exception',), (),
+        '', '<lambda>', 1, b'',
+    ),
     globals(),
 )
 ```
