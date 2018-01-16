@@ -26,6 +26,19 @@
 </ul>
 </li>
 </ul>
+</section><section><h3>enabling long paths</h3>
+<ul>
+<li>via registry<ul>
+<li><code>HKLM\SYSTEM\CurrentControlSet\Control\FileSystem</code> <code>LongPathsEnabled=1</code></li>
+</ul>
+</li>
+<li>group policy<ul>
+<li><code>Computer Configuration</code> &gt; <code>Administrative Templates</code> &gt; <code>System</code> &gt;
+<code>Filesystem</code> &gt; <code>Enable NTFS long paths</code></li>
+</ul>
+</li>
+<li>may not apply to 32 bit programs</li>
+</ul>
 </section><section><h3>extended length paths</h3>
 <ul>
 <li>prefix with <code>\\?\</code></li>
