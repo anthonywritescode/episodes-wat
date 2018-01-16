@@ -33,6 +33,17 @@
 
 ***
 
+### enabling long paths
+
+- via registry
+    - `HKLM\SYSTEM\CurrentControlSet\Control\FileSystem` `LongPathsEnabled=1`
+- group policy
+    - `Computer Configuration` > `Administrative Templates` > `System` >
+      `Filesystem` > `Enable NTFS long paths`
+- may not apply to 32 bit programs
+
+***
+
 ### extended length paths
 
 - prefix with `\\?\`
