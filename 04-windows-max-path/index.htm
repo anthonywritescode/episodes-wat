@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="build/presentation.css">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides"><section></section><section></section><section><h2>bypass <code>MAX_PATH</code> with this one stupid trick</h2>
+<h3><code>\\?\</code></h3>
+</section><section><h3><code>MAX_PATH</code> limitations</h3>
+<ul>
+<li>260 characters</li>
+<li>-3: drive letter, colon, backslash: "<code>C:\</code>"</li>
+<li>-1: terminating <code>NUL</code> character</li>
+<li>-12: directory must allow for an "8.3 filename"</li>
+<li>~244 characters for a directory structure</li>
+</ul>
+</section><section><h3>8.3 filename</h3>
+<ul>
+<li>aka short filename</li>
+<li>up to 8 characters for filename</li>
+<li>up to 3 characters for extension</li>
+<li>shortened by use of <code>~</code> + ordinal:<ul>
+<li><code>LONGFI~1.TXT</code> for <code>longfilename.txt</code></li>
+</ul>
+</li>
+</ul>
+</section><section><h3>extended length paths</h3>
+<ul>
+<li>prefix with <code>\\?\</code></li>
+<li>up to ~32,767 characters (may be subject to path expansion)</li>
+<li>do not go undergo usual path normalizations<ul>
+<li>cannot use forward slashes as separators</li>
+</ul>
+</li>
+<li><code>"\\?\C:\very\long\path\..."</code></li>
+</ul>
+</section><section><h3>real world problem</h3>
+<ul>
+<li><code>pre-commit</code> is a multi-language git hooks framework</li>
+<li>multi-language multi-platform hooks<ul>
+<li>including nodejs</li>
+</ul>
+</li>
+<li>must be able to install deeply nested <code>node_modules</code></li>
+<li>current <code>npm</code> requires 199 characters (!)</li>
+</ul>
+</section></div>
+        </div>
+        <script src="build/presentation.js"></script>
+        <script>
+            Reveal.initialize({
+                transition: 'linear',
+                keyboard: {39: 'next', 37: 'prev'}
+            });
+        </script>
+    </body>
+</html>
