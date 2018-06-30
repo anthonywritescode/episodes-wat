@@ -6,7 +6,7 @@
 
 ***
 
-## bypass `MAX_PATH` with this one stupid trick
+## long paths on windows?
 ### `\\?\`
 
 ***
