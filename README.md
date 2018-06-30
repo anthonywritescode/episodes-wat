@@ -19,6 +19,6 @@ Episodes in this series:
     - [slides](https://anthonywritescode.github.io/episodes-wat/03-lambda-raise/#/2)
     - [slides (markdown)](https://github.com/anthonywritescode/episodes-wat/blob/master/03-lambda-raise/slides.md)
 - bypassing `MAX_PATH` limits (windows) #04
-    - youtube
+    - [youtube](https://www.youtube.com/watch?v=5Z-a7JHSt00)
     - [slides](https://anthonywritescode.github.io/episodes-wat/04-windows-max-path/#/2)
     - [slides (markdown)](https://github.com/anthonywritescode/episodes-wat/blob/master/04-windows-max-path/slides.md)
