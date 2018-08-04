@@ -19,7 +19,9 @@
 - -12: directory must allow for an "8.3 filename"
 - ~244 characters for a directory structure
 
-[comment]: # (https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx)
+```comment
+https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx
+```
 
 ***
 

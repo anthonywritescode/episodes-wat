@@ -11,9 +11,10 @@
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ```
 
-[comment]: # (https://stackoverflow.com/q/8294618/812183)
-[comment]: # (https://twitter.com/zinosys/status/873227565925711872)
-[comment]: # (@zinosys)
+```comment
+https://stackoverflow.com/q/8294618/812183
+@zinosys https://twitter.com/zinosys/status/873227565925711872
+```
 
 ***
 

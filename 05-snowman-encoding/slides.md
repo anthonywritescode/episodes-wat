@@ -16,10 +16,10 @@
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ```
 
-[comment]: # (https://twitter.com/dabeaz/status/1020397965456953344)
-[comment]: # (@dabeaz)
-[comment]: # (https://twitter.com/mitsuhiko/status/1020398504689250304)
-[comment]: # (@mitsuhiko)
+```comment
+@dabeaz https://twitter.com/dabeaz/status/1020397965456953344
+@mitsukiko https://twitter.com/mitsuhiko/status/1020398504689250304
+```
 
 ***
 
