@@ -24,10 +24,61 @@ when demonstrating:
 - change the encoding to &quot;fake&quot; and show that it fails
 - also show that utf-8 is the default encoding
 --></section><section><h3>PEP 263</h3>
-<p>-
-todo explain this</p>
-<hr>
-</section></div>
+<ul>
+<li>"Defining Python Source Code Encodings"</li>
+<li>Search for "encoding cookie" in first two lines</li>
+<li>Decode the file contents using that encoding</li>
+</ul>
+</section><section><h3>what was happening</h3>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tokenize</span> <span class="kn">import</span> <span class="n">cookie_re</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cookie_re</span><span class="o">.</span><span class="n">pattern</span><span class="p">)</span>
+<span class="go">^[ \t\f]*#.*?coding[:=][ \t]*([-\w.]+)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cookie_re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;# Ennnncoding: utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&#39;utf-8&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cookie_re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;# Ennnncoding: UTF^-_-^-_-^8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&#39;UTF&#39;</span>
+</pre></div>
+</section><section><h2>ok the actual wat</h2>
+<p><em>all examples use python 3.x</em></p>
+<p><em>for python 2 add a <code>u</code> prefix to the string</em></p>
+</section><section><h3><code>.encode()</code> working</h3>
+<p>converts the string to <code>byte</code>s</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;☃&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">)</span>
+<span class="go">b&#39;\xe2\x98\x83&#39;</span>
+</pre></div>
+</section><section><h3><code>.encode()</code> failing</h3>
+<p>when an invalid codec is passed, a <code>LookupError</code> is produced</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;☃&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;UTF-garbage&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">LookupError</span>: <span class="n">unknown encoding: UTF-garbage</span>
+</pre></div>
+<p>... <em>usually</em></p>
+</section><section><h3>🤔🤨🤔🤨🤔</h3>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;☃&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;UTF-^-_-^-_-^8&#39;</span><span class="p">)</span>
+<span class="go">b&#39;\xe2\x98\x83&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;☃&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;UTF-☃&#39;</span><span class="p">)</span>
+<span class="go">b&#39;\xe2\x98\x83&#39;</span>
+</pre></div>
+</section><section><h3>explanation</h3>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">encodings</span><span class="o">.</span><span class="n">normalize_encoding</span><span class="p">(</span><span class="s1">&#39;UTF-^-_-^-_-^8&#39;</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+<span class="go">&#39;utf_8&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">encodings</span><span class="o">.</span><span class="n">normalize_encoding</span><span class="p">(</span><span class="s1">&#39;UTF-☃&#39;</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+<span class="go">&#39;utf&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">encodings</span><span class="o">.</span><span class="n">aliases</span><span class="o">.</span><span class="n">aliases</span><span class="p">[</span><span class="s1">&#39;utf&#39;</span><span class="p">]</span>
+<span class="go">&#39;utf_8&#39;</span>
+</pre></div>
+<!--
+encodings go through a multi-phase normalization:
+1. `normalizestring`: lower case and `s/ /-/g&#x27;
+https://github.com/python/cpython/blob/v3.7.0/Python/codecs.c#L56
+2. `encodings.normalize_encoding`
+https://github.com/python/cpython/blob/v3.7.0/Lib/encodings/__init__.py#L43
+3. alias normalization
+https://github.com/python/cpython/blob/v3.7.0/Lib/encodings/__init__.py#L86-L87
+--></section></div>
         </div>
         <script src="build/presentation.js"></script>
         <script>
