@@ -21,8 +21,28 @@
 @mitsukiko https://twitter.com/mitsuhiko/status/1020398504689250304
 ```
 
+```comment
+# Ennnnnnnnnnnnnnncoding: utf-8
+jalapeño = 'spicy'
+```
+
+```comment
+# Ennnnnnnnnnnnnnncoding: UTF^-_-^-_-^8 also works :)
+jalapeño = 'spicy'
+```
+
+```comment
+when demonstrating:
+- show it failing in python2, explain that python3 allows unicode variables
+- change the encoding to "fake" and show that it fails
+- also show that utf-8 is the default encoding
+```
+
 ***
 
+### PEP 263
+
+-
 todo explain this
 
 ***
