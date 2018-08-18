@@ -72,7 +72,7 @@ _for python 2 add a `u` prefix to the string_
 
 ### `.encode()` working
 
-converts the string to `byte`s
+converts the string to `bytes`
 
 ```pycon
 >>> '☃'.encode('UTF-8')
