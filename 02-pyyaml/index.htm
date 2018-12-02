@@ -8,7 +8,7 @@
         <div class="reveal">
             <div class="slides"><section></section><section></section><section><h2>pyyaml == eval?</h2>
 </section><section><h3>solution? <code>safe_load</code></h3>
-<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="s2">&quot;!!python/object/apply:os.system</span><span class="se">\n</span><span class="s2">args: [&#39;echo hi&#39;]&quot;</span><span class="p">)</span>
+<div class="highlight pycon"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="s2">&quot;!!python/object/apply:os.system</span><span class="se">\n</span><span class="s2">args: [&#39;echo hi&#39;]&quot;</span><span class="p">)</span>
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
 <span class="c">...</span>
@@ -24,7 +24,7 @@
 <li>For cpython this is <em>slow</em> by default</li>
 </ul>
 </section><section><h3>fast <em>and</em> safe</h3>
-<div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight python"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">yaml.cyaml</span> <span class="kn">import</span> <span class="n">CSafeLoader</span> <span class="k">as</span> <span class="n">Loader</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">yaml</span> <span class="kn">import</span> <span class="n">SafeLoader</span> <span class="k">as</span> <span class="n">Loader</span>
