@@ -22,3 +22,7 @@ Episodes in this series:
     - [youtube](https://www.youtube.com/watch?v=5Z-a7JHSt00)
     - [slides](https://anthonywritescode.github.io/episodes-wat/04-windows-max-path/#/2)
     - [slides (markdown)](https://github.com/anthonywritescode/episodes-wat/blob/master/04-windows-max-path/slides.md)
+- the snowman encoding (python) #05
+    - [youtube](https://www.youtube.com/watch?v=Jk78Z68v-9c)
+    - [slides](https://anthonywritescode.github.io/episodes-wat/05-snowman-encoding/#/2)
+    - [slides (markdown](https://github.com/anthonywritescode/episodes-wat/blob/master/05-snowman-encoding/slides.md)
