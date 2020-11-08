@@ -1,3 +1,5 @@
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/anthonywritescode/episodes-wat/master.svg)](https://results.pre-commit.ci/latest/github/anthonywritescode/episodes-wat/master)
+
 episodes-wat
 ============
 
