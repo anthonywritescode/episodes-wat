@@ -11,13 +11,14 @@
 </section><section><h3><code>MAX_PATH</code> limitations</h3>
 <ul>
 <li>260 characters</li>
-<li>-3: drive letter, colon, backslash: "<code>C:\</code>"</li>
+<li>-3: drive letter, colon, backslash: &quot;<code>C:\</code>&quot;</li>
 <li>-1: terminating <code>NUL</code> character</li>
-<li>-12: directory must allow for an "8.3 filename"</li>
+<li>-12: directory must allow for an &quot;8.3 filename&quot;</li>
 <li>~244 characters for a directory structure</li>
 </ul>
 <!--
 https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx
+
 --></section><section><h3>8.3 filename</h3>
 <ul>
 <li>aka short filename</li>
@@ -49,7 +50,7 @@ https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx
 <li>cannot use forward slashes as separators</li>
 </ul>
 </li>
-<li><code>"\\?\C:\very\long\path\..."</code></li>
+<li><code>&quot;\\?\C:\very\long\path\...&quot;</code></li>
 </ul>
 </section><section><h3>real world problem</h3>
 <ul>

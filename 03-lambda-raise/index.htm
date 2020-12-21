@@ -7,9 +7,11 @@
     <body>
         <div class="reveal">
             <div class="slides"><section></section><section></section><section><blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/codewithanthony">@codewithanthony</a> please explain the insane golf answer in a youtube <a href="https://t.co/ZvX194zUpk">https://t.co/ZvX194zUpk</a></p>&mdash; Eldon Schoop (@zinosys) <a href="https://twitter.com/zinosys/status/873227565925711872">June 9, 2017</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><!--
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<!--
 https://stackoverflow.com/q/8294618/812183
 @zinosys https://twitter.com/zinosys/status/873227565925711872
+
 --></section><section><h2>generator solution</h2>
 <div class="highlight python"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="p">(</span><span class="n">_</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="p">())</span><span class="o">.</span><span class="n">throw</span><span class="p">(</span><span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;foobar&#39;</span><span class="p">))</span>
 </pre></div>
@@ -109,7 +111,7 @@ https://stackoverflow.com/q/8294618/812183
 <ul>
 <li><code>dis</code> - Disassembler of Python byte code into mnemonics.</li>
 <li>often useful to figure out wtf is going on</li>
-<li>python implements a "stack" virtual machine<ul>
+<li>python implements a &quot;stack&quot; virtual machine<ul>
 <li>source code is compiled into opcodes</li>
 <li>each opcode pushes / pops / performs some side-effect</li>
 </ul>

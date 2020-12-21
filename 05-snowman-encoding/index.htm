@@ -9,24 +9,29 @@
             <div class="slides"><section></section><section></section><section><h2>the snowman encoding</h2>
 <h3>UTF-☃</h3>
 </section><section><blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"># Ennnnnnnnnnnnnnncoding: UTF^-_-^-_-^8 also works :)</p>&mdash; Armin Ronacher (@mitsuhiko) <a href="https://twitter.com/mitsuhiko/status/1020398504689250304?ref_src=twsrc%5Etfw">July 20, 2018</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<!--
 @dabeaz https://twitter.com/dabeaz/status/1020397965456953344
 @mitsukiko https://twitter.com/mitsuhiko/status/1020398504689250304
+
 --><!--
 # Ennnnnnnnnnnnnnncoding: utf-8
 jalapeño = &#x27;spicy&#x27;
+
 --><!--
 # Ennnnnnnnnnnnnnncoding: UTF^-_-^-_-^8 also works :)
 jalapeño = &#x27;spicy&#x27;
+
 --><!--
 when demonstrating:
 - show it failing in python2, explain that python3 allows unicode variables
 - change the encoding to &quot;fake&quot; and show that it fails
 - also show that utf-8 is the default encoding
+
 --></section><section><h3>PEP 263</h3>
 <ul>
-<li>"Defining Python Source Code Encodings"</li>
-<li>Search for "encoding cookie" in first two lines</li>
+<li>&quot;Defining Python Source Code Encodings&quot;</li>
+<li>Search for &quot;encoding cookie&quot; in first two lines</li>
 <li>Decode the file contents using that encoding</li>
 </ul>
 </section><section><h3>what was happening</h3>
@@ -78,6 +83,7 @@ https://github.com/python/cpython/blob/v3.7.0/Python/codecs.c#L56
 https://github.com/python/cpython/blob/v3.7.0/Lib/encodings/__init__.py#L43
 3. alias normalization
 https://github.com/python/cpython/blob/v3.7.0/Lib/encodings/__init__.py#L86-L87
+
 --></section></div>
         </div>
         <script src="build/presentation.js"></script>
