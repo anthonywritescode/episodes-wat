@@ -1,4 +1,4 @@
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/anthonywritescode/episodes-wat/master.svg)](https://results.pre-commit.ci/latest/github/anthonywritescode/episodes-wat/master)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/anthonywritescode/episodes-wat/main.svg)](https://results.pre-commit.ci/latest/github/anthonywritescode/episodes-wat/main)
 
 episodes-wat
 ============
@@ -15,16 +15,16 @@ Episodes in this series:
 - pyyaml == eval ? (python) #02
     - [youtube](https://www.youtube.com/watch?v=ATY_R6qEa3s)
     - [slides](https://anthonywritescode.github.io/episodes-wat/02-pyyaml/#/2)
-    - [slides (markdown)](https://github.com/anthonywritescode/episodes-wat/blob/master/02-pyyaml/slides.md)
+    - [slides (markdown)](https://github.com/anthonywritescode/episodes-wat/blob/main/02-pyyaml/slides.md)
 - lambda: raise? (python) #03
     - [youtube](https://www.youtube.com/watch?v=JPXDBPZRE7Y)
     - [slides](https://anthonywritescode.github.io/episodes-wat/03-lambda-raise/#/2)
-    - [slides (markdown)](https://github.com/anthonywritescode/episodes-wat/blob/master/03-lambda-raise/slides.md)
+    - [slides (markdown)](https://github.com/anthonywritescode/episodes-wat/blob/main/03-lambda-raise/slides.md)
 - bypassing `MAX_PATH` limits (windows) #04
     - [youtube](https://www.youtube.com/watch?v=5Z-a7JHSt00)
     - [slides](https://anthonywritescode.github.io/episodes-wat/04-windows-max-path/#/2)
-    - [slides (markdown)](https://github.com/anthonywritescode/episodes-wat/blob/master/04-windows-max-path/slides.md)
+    - [slides (markdown)](https://github.com/anthonywritescode/episodes-wat/blob/main/04-windows-max-path/slides.md)
 - the snowman encoding (python) #05
     - [youtube](https://www.youtube.com/watch?v=Jk78Z68v-9c)
     - [slides](https://anthonywritescode.github.io/episodes-wat/05-snowman-encoding/#/2)
-    - [slides (markdown](https://github.com/anthonywritescode/episodes-wat/blob/master/05-snowman-encoding/slides.md)
+    - [slides (markdown](https://github.com/anthonywritescode/episodes-wat/blob/main/05-snowman-encoding/slides.md)
